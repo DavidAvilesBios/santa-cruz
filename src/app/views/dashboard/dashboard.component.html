@@ -1,0 +1,320 @@
+<div class="animated fadeIn">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-7">
+          <h4 class="card-title mb-0">Cuadre septiembre 21</h4>
+          <div class="small text-muted">Sucursal Durango</div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group row">
+            <label class="col-md-5 col-form-label" for="select1">Cuenta Banco:</label>
+            <div class="col-md-7">
+              <select id="select1" name="select1" class="form-control">
+                <option value="0">Cuenta de Banco</option>
+                <option value="1">12345</option>
+                <option value="2">67890</option>
+                <option value="3">12312</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2 d-none d-md-block">
+          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
+        </div><!--/.col-->
+        <hr>
+
+          <div class="col-sm-3">
+            <div class="callout callout-info">
+              <small class="text-muted">Importe</small>
+              <br>
+              <strong class="h4">9,123</strong>
+            </div>
+          </div><!--/.col-->
+          <div class="col-sm-3">
+            <div class="callout callout-danger">
+              <small class="text-muted">IESP</small>
+              <br>
+              <strong class="h4">22,643</strong>
+            </div>
+          </div><!--/.col-->
+          <div class="col-sm-3">
+            <div class="callout callout-info">
+              <small class="text-muted">IVA</small>
+              <br>
+              <strong class="h4">9,123</strong>
+            </div>
+          </div><!--/.col-->
+          <div class="col-sm-3">
+            <div class="callout callout-info">
+              <small class="text-muted">TOTAL</small>
+              <br>
+              <strong class="h4">9,123</strong>
+            </div>
+          </div>
+          <hr>
+
+      </div><!--/.row-->
+      <div class="row">
+      <div class="col-sm-9 d-none d-md-block mt-2">
+        <p-table #dt [loading]="loading" [columns]="cols" [value]="data" [autoLayout]="true" [paginator]="true" [rows]="10" 
+        sortMode="single" selectionMode="single"    [style]="{'height': '250px', 'min-height': '50px'}">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr [pSelectableRow]="item">
+            <td>{{item.fac}}</td>
+            <td>{{item.codigo}}</td>
+            <td>{{item.cliente}}</td>
+            <td>{{item.importe}}</td>
+            <td>{{item.ieps}}</td>
+            <td>{{item.iva}}</td>
+            <td>{{item.total}}</td>
+            <td>{{item.vtas}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+     <!--<table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Fac</th>
+            <th>Codigo</th>
+            <th>Cliente</th>
+            <th>Importe</th>
+            <th>IEPS</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>VTAS AL 16%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+          <tr>
+            <td>1556</td>
+            <td>9048</td>
+            <td>MATILDE HERNANDEZ GARCIA</td>
+            <td>$4,586</td>
+            <td>$45.83</td>
+            <td>$452.63</td>
+            <td>$4,586</td>
+            <td>TRANSFER</td>
+          </tr>
+      
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>$1000</td>
+            <td>$2000</td>
+            <td>$3000</td>
+            <td>$4000</td>
+          </tr>
+        </tbody>
+      </table>--> 
+    </div>
+    <div class="col-sm-3 d-none d-md-block mt-2">
+    <table class="table table-responsive-sm table-hover table-outline mb-0">
+      <thead class="thead-light">
+        <tr>
+          <th style="padding-right: 0px;margin-right: 0px;">Efectivo</th>
+          <th style="padding-left: 0px;margin-right: 0px;">Cantidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0.50</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;" ></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>1.00</td>
+          <td ><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;" ></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>2.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>5.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>10.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>20.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;" ></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>50.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>100.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>200.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>500.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>1000.00</td>
+          <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-responsive-sm table-hover table-outline mb-0">
+      <thead>
+
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total Efectivo</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 90px;"></td>
+        </tr>
+        <tr>
+          <td>Total Voucher</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 90px;"></td>
+        </tr>
+        <tr>
+          <td>Total Transferencia</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 90px;"></td>
+        </tr>
+        <tr>
+          <td>Total Devoluciones</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 90px;"></td>
+        </tr>
+        <tr>
+          <td>Total Monetario</td>
+          <td><input type="number" class="form-control form-control-sm" id="name"  style="width: 90px;"></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+    <!--<div class="row mt-5">
+     <div class="col-sm-8">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th style="width: 50px;">Importe</th>
+            <th style="width: 50px;text-align:left;">IESP</th>
+            <th style="width: 50px;">IVA</th>
+            <th style="width: 50px;">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$44,859.43</td>
+            <td>$44,859.43</td>
+            <td>$44,859.43</td>
+            <td>$44,859.43</td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+     <div class="col-sm-4 d-none d-md-block mt-2">
+
+      <div class="progress-group-header">
+        <div class="mr-auto font-weight-bold">Banco</div>
+      </div>
+        <div class="progress-group-header">
+          <div class="mr-auto font-weight-bold">2378.06</div>
+          <div class="mr-auto font-weight-bold">9/1/2021</div>
+          <div class="mr-auto font-weight-bold">Transfer</div>
+        </div>
+        <div class="progress-group-header">
+          <div class="mr-auto  font-weight-bold">2378.06</div>
+          <div class="mr-auto  font-weight-bold">9/1/2021</div>
+          <div class="mr-auto font-weight-bold">Transfer</div>
+        </div>
+        <div class="progress-group-header">
+          <div class="mr-auto  font-weight-bold">2378.06</div>
+          <div class="mr-auto  font-weight-bold">9/1/2021</div>
+          <div class="mr-auto  font-weight-bold">Transfer</div>
+        </div>
+        <div class="progress-group-header">
+          <div class="mr-auto  font-weight-bold">2378.06</div>
+          <div class="mr-auto  font-weight-bold">9/1/2021</div>
+          <div class="mr-auto  font-weight-bold">Transfer</div>
+        </div>
+    </div> 
+    </div>
+
+    </div>-->
+</div>
