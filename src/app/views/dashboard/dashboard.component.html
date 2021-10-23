@@ -1,5 +1,4 @@
 <div class="animated fadeIn">
-
   <div class="card">
     <div class="card-body">
       <div class="row">
@@ -10,7 +9,9 @@
 
         <div class="col-sm-3">
           <div class="form-group row">
-            <label class="col-md-5 col-form-label" for="select1">Cuenta Banco:</label>
+            <label class="col-md-5 col-form-label" for="select1"
+              >Cuenta Banco:</label
+            >
             <div class="col-md-7">
               <select id="select1" name="select1" class="form-control">
                 <option value="0">Cuenta de Banco</option>
@@ -23,15 +24,17 @@
         </div>
 
         <div class="col-sm-2 d-none d-md-block">
-          <button type="button" class="btn btn-success float-right">Excel <i class="icon-cloud-download"></i></button>
+          <button type="button" class="btn btn-success float-right">
+            Excel <i class="icon-cloud-download"></i>
+          </button>
         </div>
         <!--/.col-->
-        <hr>
+        <hr />
 
         <div class="col-sm-2">
           <div class="callout callout-danger">
             <small class="text-muted">Importe</small>
-            <br>
+            <br />
             <strong class="h4">9,123</strong>
           </div>
         </div>
@@ -39,7 +42,7 @@
         <div class="col-sm-2">
           <div class="callout callout-warning">
             <small class="text-muted">IEPS</small>
-            <br>
+            <br />
             <strong class="h4">22,643</strong>
           </div>
         </div>
@@ -47,7 +50,7 @@
         <div class="col-sm-2">
           <div class="callout callout-warning">
             <small class="text-muted">IVA</small>
-            <br>
+            <br />
             <strong class="h4">9,123</strong>
           </div>
         </div>
@@ -55,140 +58,287 @@
         <div class="col-sm-2">
           <div class="callout callout-primary">
             <small class="text-muted">TOTAL</small>
-            <br>
+            <br />
             <strong class="h4">9,123</strong>
           </div>
         </div>
-        <hr>
-
+        <hr />
       </div>
       <div class="row">
         <div class="col-sm-9 d-none d-md-block mt-2">
-          <p-table #dt [loading]="loading" [columns]="cols" [value]="data" [autoLayout]="true" [paginator]="true"
-            [rows]="10" sortMode="single" selectionMode="single" [style]="{'height': '250px', 'min-height': '50px'}">
+          <p-table
+            #dt
+            [loading]="loading"
+            [columns]="cols"
+            [value]="data"
+            [autoLayout]="true"
+            [paginator]="true"
+            [rows]="10"
+            sortMode="single"
+            selectionMode="single"
+            [style]="{ height: '250px', 'min-height': '50px' }"
+          >
             <ng-template pTemplate="header" let-columns>
               <tr>
                 <th *ngFor="let col of cols" [pSortableColumn]="col.field">
-                  {{col.header}}
+                  {{ col.header }}
                   <p-sortIcon [field]="col.field"></p-sortIcon>
                 </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
               <tr [pSelectableRow]="item">
-                <td>{{item.fac}}</td>
-                <td>{{item.codigo}}</td>
-                <td>{{item.cliente}}</td>
-                <td>{{item.importe}}</td>
-                <td>{{item.ieps}}</td>
-                <td>{{item.iva}}</td>
-                <td>{{item.total}}</td>
-                <td>{{item.vtas}}</td>
+                <td>{{ item.fac }}</td>
+                <td>{{ item.codigo }}</td>
+                <td>{{ item.cliente }}</td>
+                <td>{{ item.importe }}</td>
+                <td>{{ item.ieps }}</td>
+                <td>{{ item.iva }}</td>
+                <td>{{ item.total }}</td>
+                <td>{{ item.vtas }}</td>
               </tr>
             </ng-template>
           </p-table>
         </div>
         <div class="col-sm-3 d-none d-md-block mt-2">
-          <table class="table table-responsive-sm table-hover table-outline mb-0">
+          <table
+            class="table table-responsive-sm table-hover table-outline mb-0"
+          >
             <thead class="thead-light">
               <tr>
-                <th style="padding-right: 0px;margin-right: 0px;">Efectivo</th>
-                <th style="padding-left: 0px;margin-right: 0px;">Cantidad</th>
+                <th style="padding-right: 0px; margin-right: 0px">Efectivo</th>
+                <th style="padding-left: 0px; margin-right: 0px">Cantidad</th>
                 <th>Total</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>0.50</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="moneda050"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ moneda050 * 0.5 }}</td>
               </tr>
               <tr>
                 <td>1.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="moneda1"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ moneda1 * 1 }}</td>
               </tr>
               <tr>
                 <td>2.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="moneda2"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ moneda2 * 2 }}</td>
               </tr>
               <tr>
                 <td>5.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="moneda5"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ moneda5 * 5 }}</td>
               </tr>
               <tr>
                 <td>10.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="moneda10"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ moneda10 * 10 }}</td>
               </tr>
               <tr>
                 <td>20.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete20"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete20 * 20 }}</td>
               </tr>
               <tr>
                 <td>50.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete50"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete50 * 50 }}</td>
               </tr>
               <tr>
                 <td>100.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete100"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete100 * 100 }}</td>
               </tr>
               <tr>
                 <td>200.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete200"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete200 * 200 }}</td>
               </tr>
               <tr>
                 <td>500.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete500"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete500 * 500 }}</td>
               </tr>
               <tr>
                 <td>1000.00</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 70px;"></td>
-                <td>0</td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="billete1000"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 70px"
+                    (ngModelChange)="sumarEfectivo()"
+                  />
+                </td>
+                <td>{{ billete1000 * 1000 }}</td>
               </tr>
               <tr>
                 <td>Total Efectivo</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 90px;"></td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="name"
+                    [(ngModel)]="totalEfectivo"
+                    [disabled]="true"
+                    style="width: 90px"
+                  />
+                </td>
                 <td></td>
               </tr>
               <tr>
                 <td>Total Voucher</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 90px;"></td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 90px"
+                  />
+                </td>
                 <td></td>
               </tr>
               <tr>
                 <td>Total Transferencia</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 90px;"></td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 90px"
+                  />
+                </td>
                 <td></td>
               </tr>
               <tr>
                 <td>Total Devoluciones</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 90px;"></td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 90px"
+                  />
+                </td>
                 <td></td>
               </tr>
               <tr>
                 <td>Total Monetario</td>
-                <td><input type="number" class="form-control form-control-sm" id="name" style="width: 90px;"></td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="name"
+                    style="width: 90px"
+                  />
+                </td>
                 <td></td>
               </tr>
             </tbody>
           </table>
 
-          <table class="table table-responsive-sm table-hover table-outline mb-0">
-            <thead>
-
-            </thead>
-            <tbody>
-
-            </tbody>
+          <table
+            class="table table-responsive-sm table-hover table-outline mb-0"
+          >
+            <thead></thead>
+            <tbody></tbody>
           </table>
         </div>
       </div>
     </div>
+  </div>
+</div>

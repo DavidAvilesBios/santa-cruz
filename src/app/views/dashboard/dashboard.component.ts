@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { NullVisitor } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -9,6 +10,18 @@ export class DashboardComponent implements OnInit {
 
   radioModel: string = 'Month';
   loading = false;
+  moneda050: number = 0;
+  moneda1: number = 0;
+  moneda2: number = 0;
+  moneda5: number = 0;
+  moneda10: number = 0;
+  billete20: number = 0;
+  billete50: number = 0;
+  billete100: number = 0;
+  billete200: number = 0;
+  billete500: number = 0;
+  billete1000: number = 0;
+  totalEfectivo: number = 0;
 
   public cols = [
     { field: 'fac', header: 'Folio' },
@@ -468,4 +481,10 @@ export class DashboardComponent implements OnInit {
       this.mainChartData3.push(65);
     }
   }
+
+  public sumarEfectivo(){
+    this.totalEfectivo =   (this.moneda050 * .50) +  (this.moneda1 * 1) + (this.moneda2 * 2) + (this.moneda5 * 5) + (this.moneda10 * 10) + (this.billete20 * 20) + (this.billete50 * 50) + (this.billete100 * 100) + (this.billete200 * 200) + (this.billete500 * 500) + (this.billete1000 * 1000);
+  }
+
+  
 }

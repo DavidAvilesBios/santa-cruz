@@ -1,4 +1,4 @@
-<div class="app-body">
+<!--<div class="app-body">
   <main class="main d-flex align-items-center">
     <div class="container">
       <div class="row">
@@ -46,4 +46,50 @@
       </div>
     </div>
   </main>
-</div>
+</div>-->
+
+<main class="form-signin">
+  <form>
+    <img
+      class="mb-4"
+      src="../assets/img/logo-santa-cruz.png"
+      alt=""
+      width="300"
+      height="250"
+    />
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Usuario"
+        [(ngModel)]="email"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+    <div class="form-floating mt-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Contraseña"
+        [(ngModel)]="password"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+
+    <div class="checkbox mb-3">
+      <label> <input type="checkbox" value="remember-me" /> Recordarme </label>
+    </div>
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      type="button"
+      [disabled]="!email && !password"
+      (click)="login()"
+    >
+      <span *ngIf="!cargando">Entrar</span>
+      <i class="fa fa-circle-o-notch fa-lg mt-4 fa-spin" *ngIf="cargando"></i>
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; santa cruz 2021</p>
+  </form>
+</main>
