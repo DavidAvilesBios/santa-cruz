@@ -44,6 +44,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import {TableModule} from 'primeng/table';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { FormsModule } from '@angular/forms';
     IconModule,
     IconSetModule.forRoot(),
     TableModule,
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

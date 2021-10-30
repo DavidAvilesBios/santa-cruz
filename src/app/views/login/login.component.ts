@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,14 +12,22 @@ export class LoginComponent {
    password: string;
    cargando: boolean = false;
 
-   constructor(private router: Router){
+   constructor(private router: Router,
+               private loginService: LoginService){
 
    }
 
    login(){
      this.cargando = true;
-     setTimeout(() => {
+     this.loginService.postLogin({email:this.email, password: this.password}).subscribe((resp) =>{
       this.router.navigate(['/dashboard']);
-     }, 2000);
+     },(error)=>{
+             
+
+      this.cargando = false;
+
+
+     })
+
    }
 }

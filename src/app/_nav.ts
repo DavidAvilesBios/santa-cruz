@@ -6,5 +6,10 @@ export const navItems: INavData[] = [
     url: '/dashboard',
     icon: 'icon-speedometer',
   },
+  {
+    name: 'Configuración',
+    url: '/settings',
+    icon: 'icon-cil-settings',
+  },
  
 ];
