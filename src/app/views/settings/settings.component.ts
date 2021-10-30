@@ -3,7 +3,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SettingsService } from './settings.service';
 
 @Component({
-  templateUrl: 'settings.component.html'
+  templateUrl: 'settings.component.html',
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
 

@@ -1,4 +1,4 @@
-<div class="animated fadeIn container">
+<div class="animated fadeIn">
       <div class="row  pt-5">
         <div class="col-sm-7">
           <h4 class="card-title mb-0">Usuarios</h4>
@@ -12,10 +12,11 @@
 
         <!--/.col-->
         <hr />
-        <div class="col-md-12 d-md-block mt-5">
+        <div class="col-md-12 d-md-block mt-5 contenedor">
           <div class="progress-group-header" *ngFor="let usuario of usuarios">
-            <i class="icon-user-female progress-group-icon"></i>
-            <div>{{usuario.email}}</div>
+            <!--<i class="fa fa-user"></i>-->
+            <h5 class="card-title mb-0">{{usuario.nombre}}</h5>
+            <!--<div class="small text-muted">{{usuario.email}}</div>-->
             <div class="ml-auto font-weight-bold">
                   <button type="button" class="btn btn-brand btn-twitter mr-1" (click)="editUser(usuario)" tooltip="Editar" style="margin-bottom: 4px">
                     <i class="fa fa-edit"></i> 
