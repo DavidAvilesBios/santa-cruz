@@ -30,13 +30,13 @@ export class UserComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>, title?: string) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-lg', backdrop: 'static', keyboard: true });
+    this.modalRef = this.modalService.show(template, { class: 'modal-xs', backdrop: 'static', keyboard: true });
     this.modalService.onHide.subscribe((reason: string) => {});
   }
 
   newUser(){
     this.usuario = null;
-    this.title = 'Nuevo Usuario';
+    this.title = 'Nuevo usuario';
     this.openModal(this.UserTemplate);
       
   }

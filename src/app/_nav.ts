@@ -2,9 +2,9 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
+    name: 'Cortes',
     url: '/dashboard',
-    icon: 'icon-speedometer',
+    icon: 'file-invoice-dollar',
   },
   {
     name: 'Configuración',
@@ -12,19 +12,19 @@ export const navItems: INavData[] = [
     icon: 'fa fa-cog',
     children: [
       {
-        name: 'permisos',
+        name: 'Permisos',
         url: '/settings/permisos',
-        icon: 'icon-puzzle'
+        icon: 'fa fa-lock'
       },
       {
-        name: 'usuarios',
+        name: 'Usuarios',
         url: '/settings/usuarios',
-        icon: 'icon-puzzle'
+        icon: 'fa fa-user'
       },
       {
-        name: 'perfiles',
+        name: 'Perfiles',
         url: '/settings/perfiles',
-        icon: 'icon-puzzle'
+        icon: 'fa fa-users'
       },
     ]
   },
