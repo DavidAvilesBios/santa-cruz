@@ -9,7 +9,7 @@ export const navItems: INavData[] = [
   {
     name: 'Configuración',
     url: '/settings',
-    icon: 'icon-cil-settings',
+    icon: 'fa fa-cog',
   },
  
 ];
