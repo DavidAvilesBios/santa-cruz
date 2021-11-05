@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -12,8 +12,16 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SettingsService } from './settings.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { UserComponent } from './user/user.component';
+import { UserEditComponent } from './user/user-edit.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { PermisosComponent } from './permisos/permisos.component';
+import { UserComponent } from './user/user.component';
+import { PermisoEditComponent } from './permisos/permiso-edit.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { PerfilEditComponent } from './perfil/perfil-edit.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
+
 
 @NgModule({
   imports: [
@@ -27,9 +35,11 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     SettingsRoutingModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    TabsModule.forRoot(),
   ],
-  declarations: [ SettingsComponent, UserComponent],
-  providers: [SettingsService]
+  declarations: [ SettingsComponent, UserEditComponent,PermisosComponent,UserComponent,PermisoEditComponent,PerfilComponent,PerfilEditComponent],
+  providers: [SettingsService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SettingsModule { }

@@ -3,30 +3,27 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SettingsService } from '../settings.service';
 
 @Component({
-  templateUrl: 'user.component.html',
-  styleUrls: ['./user.component.css'],
+  templateUrl: 'perfil.component.html'
 })
-export class UserComponent implements OnInit {
+export class PerfilComponent implements OnInit {
 
-    @ViewChild('UserTemplate', { static: false }) public UserTemplate: TemplateRef<any>;
+    @ViewChild('PerfilTemplate', { static: false }) public PerfilTemplate: TemplateRef<any>;
 
-    public usuarios: any[] = null;
-    public usuario: any;
+    public perfiles: any[] = null;
+    public perfil: any;
     public title: string;
     bsModalRef: BsModalRef;
     modalRef: BsModalRef;
 
-   constructor(private settingsService:SettingsService,
-    private modalService: BsModalService){
-
-   }
+  constructor(private settingsService:SettingsService,
+    private modalService: BsModalService) { }
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   ngOnInit(): void {
-     this.getUsers();
+     this.getPerfiles();
   }
 
   openModal(template: TemplateRef<any>, title?: string) {
@@ -34,31 +31,31 @@ export class UserComponent implements OnInit {
     this.modalService.onHide.subscribe((reason: string) => {});
   }
 
-  newUser(){
-    this.usuario = null;
-    this.title = 'Nuevo Usuario';
-    this.openModal(this.UserTemplate);
+  newPerfil(){
+    this.perfil = null;
+    this.title = 'Nuevo Perfil';
+    this.openModal(this.PerfilTemplate);
       
   }
 
-  getUsers(){
-    this.settingsService.getUsers().subscribe((resp)=>{
-        console.log(resp.usuarios)
-        this.usuarios = resp.usuarios;
+  getPerfiles(){
+    this.settingsService.getPermissions().subscribe((resp)=>{
+        console.log(resp.perfiles)
+        this.perfiles = resp.perfiles;
     })
   }
 
-  editUser(usuario){
-     console.log(usuario);
-      this.title = 'Editar Usuario ' + usuario.nombre;
-      this.usuario = usuario;
-      this.openModal(this.UserTemplate);
+  editPerfil(perfil){
+     console.log(perfil);
+      this.title = 'Editar Perfil ' + perfil.descripcion;
+      this.perfil = perfil;
+      this.openModal(this.PerfilTemplate);
   }
 
   deleteUser(usuario){
     if (confirm('¿Desea eliminar al usuario?')) {
         this.settingsService.deleteUser(usuario._id).subscribe((resp)=>{
-            this.getUsers();
+            this.getPerfiles();
         })
       } else {
         // Do nothing!
@@ -67,6 +64,4 @@ export class UserComponent implements OnInit {
 
   }
 
-
-  
 }

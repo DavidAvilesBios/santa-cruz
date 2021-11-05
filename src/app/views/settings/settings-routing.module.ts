@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PerfilComponent } from './perfil/perfil.component';
+import { PermisosComponent } from './permisos/permisos.component';
 import { SettingsComponent } from './settings.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -9,7 +12,30 @@ const routes: Routes = [
     component: SettingsComponent,
     data: {
       title: 'Settings'
-    }
+    },
+    children: [
+      {
+        path: 'permisos',
+        component: PermisosComponent,
+        data: {
+          title: 'Permisos'
+        }
+      },
+      {
+        path: 'usuarios',
+        component: UserComponent,
+        data: {
+          title: 'Users'
+        }
+      },
+      {
+        path:'perfiles',
+        component: PerfilComponent,
+        data: {
+          title: 'Perfil'
+        }
+      }
+    ]
   }
 ];
 

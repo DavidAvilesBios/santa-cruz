@@ -40,5 +40,45 @@ export class SettingsService {
     return this.http.delete(this.apiRoot + 'usuario/' + id);
   }
 
+  getPermisos(): Observable<any> {
+    return this.http.get(this.apiRoot + 'permiso/');
+  }
+
+  getPermiso(id): Observable<any> {
+    return this.http.get(this.apiRoot + 'permiso/' + id);
+  }
+
+
+  editPermiso(permiso): Observable<any> {
+    return this.http.put(this.apiRoot + 'permiso/' + permiso.id,permiso);
+  }
+
+  deletePermiso(id): Observable<any> {
+    return this.http.delete(this.apiRoot + 'permiso/' + id);
+  }
+
+  
+  addNewPermiso(data): Observable<any>{
+    return this.http.post(this.apiRoot + 'permiso',data);
+  }
+
+  
+  getPerfil(id): Observable<any> {
+    return this.http.get(this.apiRoot + 'perfil/' + id);
+  }
+
+
+  editPerfil(perfil): Observable<any> {
+    return this.http.put(this.apiRoot + 'perfil/' + perfil.id,perfil);
+  }
+
+  deletePerfil(id): Observable<any> {
+    return this.http.delete(this.apiRoot + 'perfil/' + id);
+  }
+
+  
+  addNewPerfil(data): Observable<any>{
+    return this.http.post(this.apiRoot + 'perfil',data);
+  }
 
 }

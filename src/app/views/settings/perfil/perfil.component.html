@@ -1,38 +1,33 @@
 <div class="animated fadeIn">
   <div class="row  pt-5">
     <div class="col-sm-7">
-      <h4 class="card-title mb-0">Usuarios</h4>
+      <h4 class="card-title mb-0">Perfiles</h4>
     </div>
 
     <div class="col-sm-5 d-md-block">
-      <button type="button" class="btn btn-success float-right" (click)="newUser()">
-        <i class="fa fa-plus mr-1"></i> Nuevo Usuario
+      <button type="button" class="btn btn-success float-right" (click)="newPerfil()">
+        <i class="fa fa-plus mr-1"></i> Nuevo Perfil
       </button>
     </div>
 
     <!--/.col-->
     <hr />
     <div class="col-md-12 d-md-block mt-5 contenedor">
-      <div class="progress-group-header" *ngFor="let usuario of usuarios">
-
-        <div class="mr-2">
-          <img src="../../../assets/profile_pic.jpeg" style="height: 70px; width: auto;" class="img-thumbnail img-fluid"
-            alt="">
-        </div>
+      <div class="progress-group-header" *ngFor="let perfil of perfiles">
         <!--<i class="fa fa-user"></i>-->
         <div>
-          <h5 class="card-title mb-0">{{usuario.nombre}}</h5>
-          <p>{{usuario.email}}</p>
+          <h5 class="card-title mb-0">{{perfil.descripcion}}</h5>
+          <p>{{perfil.descripcion}}</p>
         </div>
 
         <!--<div class="small text-muted">{{usuario.email}}</div>-->
         <div class="ml-auto mb-3" style="height: 100%;">
-          <button type="button" class="btn btn-brand btn-twitter mr-1" (click)="editUser(usuario)" tooltip="Editar"
+          <button type="button" class="btn btn-brand btn-twitter mr-1" (click)="editPerfil(perfil)" tooltip="Editar"
             style="margin-bottom: 4px">
             <i class="fa fa-edit"></i>
           </button>
 
-          <button type="button" class="btn btn-brand btn-youtube mr-1" tooltip="Eliminar" (click)="deleteUser(usuario)"
+          <button type="button" class="btn btn-brand btn-youtube mr-1" tooltip="Eliminar" (click)="deletePerfil(perfil)"
             style="margin-bottom: 4px">
             <i class="fa fa-times"></i>
           </button>
@@ -43,7 +38,8 @@
   </div>
 </div>
 
-<ng-template #UserTemplate>
+
+<ng-template #PerfilTemplate>
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{title}}</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -51,6 +47,6 @@
     </button>
   </div>
   <div class="modal-body" [ngStyle]="{ 'margin-top': '2rem' }">
-    <app-user (onClose)="modalRef.hide();getUsers()" [id]="usuario?._id"></app-user>
+    <app-perfil (onClose)="modalRef.hide();getPerfiles()" [id]="perfil?._id"></app-perfil>
   </div>
 </ng-template>

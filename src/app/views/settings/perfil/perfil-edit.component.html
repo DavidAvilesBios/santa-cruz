@@ -1,0 +1,71 @@
+<div class="animated fadeIn" [ngClass]="{ 'no-action-tools': true }">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" #mainUsuarios>
+          <form action="" class="form-horizontal" [formGroup]="perfilForm">
+            <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="comentario">Nombre:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="Nombre"
+                        [ngClass]="{
+                          'is-valid': perfilForm.controls.Nombre.valid,
+                          'is-invalid':
+                            perfilForm.controls.Nombre.invalid && perfilForm.controls.Nombre.touched
+                        }"
+                      />
+                      <span
+                        *ngIf="perfilForm.controls.Nombre.invalid && perfilForm.controls.Nombre.touched"
+                        class="help-block text-danger"
+                      >
+                        Este campo es requerido
+                      </span>
+                    </div>
+
+                      <div class="form-group col-md-12">
+                        <tabset>
+                          <tab>
+                            <ng-template tabHeading><i class="icon-calculator"></i> Analitica &nbsp;<span class="badge badge-pill badge-danger">{{permisos.length}}</span></ng-template>
+                           <div class="row">
+                             <div class="col-md-6">
+                              <div *ngFor="let item of permisos" class="mt-2">
+                                 {{item.descripcion}}
+                            </div>
+                             </div>
+                             <div class="col-md-6">
+                              <div *ngFor="let item of permisos">
+                                <label class="switch switch-pill switch-primary">
+                                  <input type="checkbox" class="switch-input"  [checked]="item.valor"  (change)="item.valor = !item.valor">
+                                  <span class="switch-slider"></span>
+                                </label>
+                              </div>
+                             </div>
+                           </div>
+                          </tab>
+
+                        </tabset>
+                      </div>
+                  </div>
+            </div>
+  
+            <div class="card-footer clearfix">
+              <div class="group-buttons float-right">
+                <button
+                  [disabled]="!perfilForm.valid"
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="savePerfil()"
+                >
+                  <i class="fa fa-save"></i> Guardar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

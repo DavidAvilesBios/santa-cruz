@@ -3,30 +3,27 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SettingsService } from '../settings.service';
 
 @Component({
-  templateUrl: 'user.component.html',
-  styleUrls: ['./user.component.css'],
+  templateUrl: 'permisos.component.html'
 })
-export class UserComponent implements OnInit {
+export class PermisosComponent implements OnInit {
 
-    @ViewChild('UserTemplate', { static: false }) public UserTemplate: TemplateRef<any>;
+    @ViewChild('PermisoTemplate', { static: false }) public PermisoTemplate: TemplateRef<any>;
 
-    public usuarios: any[] = null;
-    public usuario: any;
+    public permisos: any[] = null;
+    public permiso: any;
     public title: string;
     bsModalRef: BsModalRef;
     modalRef: BsModalRef;
 
-   constructor(private settingsService:SettingsService,
-    private modalService: BsModalService){
-
-   }
+  constructor(private settingsService:SettingsService,
+    private modalService: BsModalService) { }
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   ngOnInit(): void {
-     this.getUsers();
+     this.getPermisos();
   }
 
   openModal(template: TemplateRef<any>, title?: string) {
@@ -34,31 +31,31 @@ export class UserComponent implements OnInit {
     this.modalService.onHide.subscribe((reason: string) => {});
   }
 
-  newUser(){
-    this.usuario = null;
-    this.title = 'Nuevo Usuario';
-    this.openModal(this.UserTemplate);
+  newPermiso(){
+    this.permiso = null;
+    this.title = 'Nuevo Permiso';
+    this.openModal(this.PermisoTemplate);
       
   }
 
-  getUsers(){
-    this.settingsService.getUsers().subscribe((resp)=>{
-        console.log(resp.usuarios)
-        this.usuarios = resp.usuarios;
+  getPermisos(){
+    this.settingsService.getPermisos().subscribe((resp)=>{
+        console.log(resp.permisos)
+        this.permisos = resp.permisos;
     })
   }
 
-  editUser(usuario){
-     console.log(usuario);
-      this.title = 'Editar Usuario ' + usuario.nombre;
-      this.usuario = usuario;
-      this.openModal(this.UserTemplate);
+  editPermiso(permiso){
+     console.log(permiso);
+      this.title = 'Editar Permiso ' + permiso.nombre;
+      this.permiso = permiso;
+      this.openModal(this.PermisoTemplate);
   }
 
   deleteUser(usuario){
     if (confirm('¿Desea eliminar al usuario?')) {
         this.settingsService.deleteUser(usuario._id).subscribe((resp)=>{
-            this.getUsers();
+            this.getPermisos();
         })
       } else {
         // Do nothing!
@@ -67,6 +64,4 @@ export class UserComponent implements OnInit {
 
   }
 
-
-  
 }

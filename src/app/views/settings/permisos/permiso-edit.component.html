@@ -1,0 +1,86 @@
+<div class="animated fadeIn" [ngClass]="{ 'no-action-tools': true }">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" #mainUsuarios>
+          <form action="" class="form-horizontal" [formGroup]="permisoForm">
+            <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="comentario">Nombre:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="Nombre"
+                        [ngClass]="{
+                          'is-valid': permisoForm.controls.Nombre.valid,
+                          'is-invalid':
+                            permisoForm.controls.Nombre.invalid && permisoForm.controls.Nombre.touched
+                        }"
+                      />
+                      <span
+                        *ngIf="permisoForm.controls.Nombre.invalid && permisoForm.controls.Nombre.touched"
+                        class="help-block text-danger"
+                      >
+                        Este campo es requerido
+                      </span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="comentario">Descripción:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="Descripcion"
+                          [ngClass]="{
+                            'is-valid': permisoForm.controls.Descripcion.valid,
+                            'is-invalid':
+                              permisoForm.controls.Descripcion.invalid && permisoForm.controls.Descripcion.touched
+                          }"
+                        />
+                        <span
+                          *ngIf="permisoForm.controls.Descripcion.invalid && permisoForm.controls.Descripcion.touched"
+                          class="help-block text-danger"
+                        >
+                          Este campo es requerido
+                        </span>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                        <label for="comentario">Modulo:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="Modulo"
+                          [ngClass]="{
+                            'is-valid': permisoForm.controls.Modulo.valid,
+                            'is-invalid':
+                              permisoForm.controls.Modulo.invalid && permisoForm.controls.Modulo.touched
+                          }"
+                        />
+                        <span
+                          *ngIf="permisoForm.controls.Modulo.invalid && permisoForm.controls.Modulo.touched"
+                          class="help-block text-danger"
+                        >
+                          Este campo es requerido
+                        </span>
+                      </div>
+                  </div>
+            </div>
+  
+            <div class="card-footer clearfix">
+              <div class="group-buttons float-right">
+                <button
+                  [disabled]="!permisoForm.valid"
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="savePermiso()"
+                >
+                  <i class="fa fa-save"></i> Guardar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
