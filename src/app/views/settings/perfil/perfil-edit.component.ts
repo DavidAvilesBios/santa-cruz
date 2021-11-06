@@ -6,6 +6,7 @@ import { SettingsService } from '../settings.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil-edit.component.html',
+  styleUrls: ['./perfil.component.css']
 })
 export class PerfilEditComponent implements OnInit {
   @Input() id?: any;
