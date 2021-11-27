@@ -26,6 +26,12 @@ export const navItems: INavData[] = [
         url: '/settings/perfiles',
         icon: 'fa fa-users'
       },
+
+      {
+        name: 'Sucursales',
+        url: '/settings/sucursales',
+        icon: 'fa fa-users'
+      },
     ]
   },
  

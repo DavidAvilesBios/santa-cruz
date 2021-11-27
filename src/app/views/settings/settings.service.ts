@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SettingsService {
   public apiRoot: string;
   public settings: any;
@@ -11,7 +13,8 @@ export class SettingsService {
   public apiAnalisis: string;
 
   constructor(public http: HttpClient) {
-    this.apiRoot = 'https://santacruz-webapp-api.herokuapp.com/';
+    //this.apiRoot = 'https://santacruz-webapp-api.herokuapp.com/';
+    this.apiRoot = 'http://localhost:3000/';
 
   }
 
@@ -62,6 +65,28 @@ export class SettingsService {
     return this.http.post(this.apiRoot + 'permiso',data);
   }
 
+  getSucursales(): Observable<any> {
+    return this.http.get(this.apiRoot + 'sucursal/');
+  }
+
+  getSucursal(id): Observable<any> {
+    return this.http.get(this.apiRoot + 'sucursal/' + id);
+  }
+
+
+  editSucursal(sucursal): Observable<any> {
+    return this.http.put(this.apiRoot + 'sucursal/' + sucursal.id,sucursal);
+  }
+
+  deleteSucursal(id): Observable<any> {
+    return this.http.delete(this.apiRoot + 'sucursal/' + id);
+  }
+
+  
+  addNewSucursal(data): Observable<any>{
+    return this.http.post(this.apiRoot + 'sucursal',data);
+  }
+
   
   getPerfil(id): Observable<any> {
     return this.http.get(this.apiRoot + 'perfil/' + id);
@@ -79,6 +104,10 @@ export class SettingsService {
   
   addNewPerfil(data): Observable<any>{
     return this.http.post(this.apiRoot + 'perfil',data);
+  }
+
+  getData(data): Observable<any>{
+    return this.http.get(this.apiRoot + 'documento', {params:data})
   }
 
 }

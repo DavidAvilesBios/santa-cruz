@@ -1,0 +1,71 @@
+<div class="animated fadeIn" [ngClass]="{ 'no-action-tools': true }">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" #mainUsuarios>
+        <form action="" class="form-horizontal" [formGroup]="sucursalForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="comentario">Nombre:</label>
+                <input type="text" class="form-control" formControlName="Nombre" [ngClass]="{
+                          'is-valid': sucursalForm.controls.Nombre.valid,
+                          'is-invalid':
+                            sucursalForm.controls.Nombre.invalid && sucursalForm.controls.Nombre.touched
+                        }" />
+                <span *ngIf="sucursalForm.controls.Nombre.invalid && sucursalForm.controls.Nombre.touched"
+                  class="help-block text-danger">
+                  Este campo es requerido
+                </span>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="comentario">Domicilio:</label>
+                <input type="text" class="form-control" formControlName="Domicilio" [ngClass]="{
+                          'is-valid': sucursalForm.controls.Domicilio.valid,
+                          'is-invalid':
+                            sucursalForm.controls.Domicilio.invalid && sucursalForm.controls.Domicilio.touched
+                        }" />
+                <span *ngIf="sucursalForm.controls.Domicilio.invalid && sucursalForm.controls.Domicilio.touched"
+                  class="help-block text-danger">
+                  Este campo es requerido
+                </span>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="comentario">CuentaBancaria:</label>
+                <input type="text" class="form-control" formControlName="CuentaBancaria" [ngClass]="{
+                          'is-valid': sucursalForm.controls.CuentaBancaria.valid,
+                          'is-invalid':
+                            sucursalForm.controls.CuentaBancaria.invalid && sucursalForm.controls.CuentaBancaria.touched
+                        }" />
+                <span *ngIf="sucursalForm.controls.CuentaBancaria.invalid && sucursalForm.controls.CuentaBancaria.touched"
+                  class="help-block text-danger">
+                  Este campo es requerido
+                </span>
+              </div>
+
+              <div class="form-group col-md-12">
+                <label for="comentario">Serie:</label>
+                <input type="text" class="form-control" formControlName="Serie" [ngClass]="{
+                          'is-valid': sucursalForm.controls.Serie.valid,
+                          'is-invalid':
+                            sucursalForm.controls.Serie.invalid && sucursalForm.controls.Serie.touched
+                        }" />
+                <span *ngIf="sucursalForm.controls.Serie.invalid && sucursalForm.controls.Serie.touched"
+                  class="help-block text-danger">
+                  Este campo es requerido
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer clearfix">
+            <div class="group-buttons float-right">
+              <button [disabled]="!sucursalForm.valid" class="btn btn-primary" type="button" (click)="saveSucursal()">
+                <i class="fa fa-save"></i> Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

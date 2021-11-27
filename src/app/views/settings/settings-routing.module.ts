@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PermisosComponent } from './permisos/permisos.component';
 import { SettingsComponent } from './settings.component';
+import { SucursalComponent } from './sucursales/sucursal.component';
 import { UserComponent } from './user/user.component';
 
 
@@ -33,6 +34,13 @@ const routes: Routes = [
         component: PerfilComponent,
         data: {
           title: 'Perfil'
+        }
+      },
+      {
+        path:'sucursales',
+        component: SucursalComponent,
+        data: {
+          title: 'Sucursal'
         }
       }
     ]

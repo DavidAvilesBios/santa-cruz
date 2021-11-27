@@ -20,6 +20,8 @@ import { PermisoEditComponent } from './permisos/permiso-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PerfilEditComponent } from './perfil/perfil-edit.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { SucursalComponent } from './sucursales/sucursal.component';
+import { SucursalEditComponent } from './sucursales/sucursal-edit.component';
 
 
 
@@ -38,8 +40,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
   ],
-  declarations: [ SettingsComponent, UserEditComponent,PermisosComponent,UserComponent,PermisoEditComponent,PerfilComponent,PerfilEditComponent],
-  providers: [SettingsService],
+  declarations: [ SettingsComponent, UserEditComponent,PermisosComponent,UserComponent,PermisoEditComponent,PerfilComponent,PerfilEditComponent,SucursalEditComponent,SucursalComponent],
+  providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SettingsModule { }
