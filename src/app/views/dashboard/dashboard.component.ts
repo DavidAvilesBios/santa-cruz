@@ -7,11 +7,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 
 @Component({
-  templateUrl: 'dashboard.component.html'
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
 
   @ViewChild('SucursalTemplate', { static: false }) public SucursalTemplate: TemplateRef<any>;
+  @ViewChild('FacturasTemplate', { static: false }) public FacturasTemplate: TemplateRef<any>;
 
   radioModel: string = 'Month';
   loading = false;
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
   billete1000: number = 0;
   totalEfectivo: number = 0;
   totales: any;
+  serie: any;
 
   modalRef: BsModalRef;
 
@@ -36,12 +39,23 @@ export class DashboardComponent implements OnInit {
   minDate = new Date();
   sucursales = [];
   sucursal:any;
-
+  dataFacturas = []
   fechaFormatted1: any;
   fechaFormatted2:  any;
   sucursalNombre:any;
 
   public cols = [
+    { field: 'CFOLIO', header: 'Folio' },
+    { field: 'CIDCLIENTEPROVEEDOR', header: 'Codigo' },
+    { field: 'CRFC', header: 'RFC' },
+    { field: 'CRAZONSOCIAL', header: 'Cliente' },
+    { field: 'CNETO', header: 'Importe' },
+    { field: 'CIMPUESTO1', header: 'IEPS' },
+    { field: 'CIMPUESTO2', header: 'IVA' },
+    { field: 'CTOTAL', header: 'Total' },
+  ];
+
+  public cols2 = [
     { field: 'CFOLIO', header: 'Folio' },
     { field: 'CIDCLIENTEPROVEEDOR', header: 'Codigo' },
     { field: 'CRFC', header: 'RFC' },
@@ -74,8 +88,8 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  openModal(template: TemplateRef<any>, title?: string) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-md', backdrop: 'static', keyboard: true });
+  openModal(template: TemplateRef<any>, grande?) {
+    this.modalRef = this.modalService.show(template, { class: !grande ? 'modal-md' : 'modal-xl', backdrop: 'static', keyboard: true });
     this.modalService.onHide.subscribe((reason: string) => {});
   }
 
@@ -96,11 +110,28 @@ export class DashboardComponent implements OnInit {
       this.totales = resp.totales;
       this.cargo = true;
       this.modalRef.hide();
+      this.serie = this.sucursales.find((sucursal)=> sucursal._id == this.sucursal).series['factura'];
+      console.log(this.serie);
+  });
+  this.settingsService.getFacturasSucursal({sucursal_id: this.sucursal}).subscribe((resp)=>{
+       
   });
   }
 
   openDatosGenerar(){
     this.openModal(this.SucursalTemplate);
   }
+
+  openFactura(){
+    this.openModal(this.FacturasTemplate,true);
+  }
+
+  addFacturas(facturas){
+     for(let factura of facturas){
+     this.dataFacturas.push(factura);
+     }
+     this.modalRef.hide();
+  }
+
   
 }

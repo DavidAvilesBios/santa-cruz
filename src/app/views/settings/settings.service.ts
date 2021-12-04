@@ -110,4 +110,14 @@ export class SettingsService {
     return this.http.get(this.apiRoot + 'documento', {params:data})
   }
 
+
+  getFacturasSucursal(data): Observable<any>{
+    return this.http.get(this.apiRoot + 'documento/sucursal', {params:data})
+  }
+
+
+  getDocumentoFactura(data): Observable<any>{
+    return this.http.get(this.apiRoot + 'documento/factura', {params:data})
+  }
+
 }

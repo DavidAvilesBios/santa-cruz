@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FacturasAnterioresComponent } from './facturas-anteriores/facturas-anteriores-edit';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  declarations: [ DashboardComponent ],
+  declarations: [ DashboardComponent,FacturasAnterioresComponent ],
   providers:[]
 })
 export class DashboardModule { }
